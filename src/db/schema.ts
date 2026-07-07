@@ -39,6 +39,12 @@ export const events = pgTable("events", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+const databaseUrl = process.env.DATABASE_URL;
+
+console.log("DATABASE_URL =", databaseUrl);
+
+console.log("NODE_ENV =", process.env.NODE_ENV);
+
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type Event = typeof events.$inferSelect;

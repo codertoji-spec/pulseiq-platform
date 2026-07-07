@@ -31,13 +31,10 @@ export async function GET() {
         }
       }, 30000);
 
-      // Clean up when stream is cancelled
-      const originalCancel = stream.cancel?.bind(stream);
-      stream.cancel = async (reason?: unknown) => {
-        clearInterval(pingInterval);
-        unsubscribe();
-        if (originalCancel) await originalCancel(reason);
-      };
+controller.oncancel = () => {
+  clearInterval(pingInterval);
+  unsubscribe();
+};
     },
   });
 

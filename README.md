@@ -11,27 +11,27 @@ Built with Next.js, Drizzle ORM, and PostgreSQL.
 ## Screenshots
 
 ### Sign In
-![Auth](screenshots/auth.png)
+![Auth](assets/login.png)
 
 ### Dashboard
 Key metrics (users, logins, purchases, searches, errors), login/request charts over 24h, event-type breakdown, device distribution.
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](assets/dashboard.png)
 
 ### Events
 Searchable, filterable event log — by user ID, event type, country, device, date range — with CSV export.
-![Events](screenshots/events.png)
+![Events](assets/events.png)
 
 ### Analytics
 Deeper metrics: total events processed, unique users, uptime, success rate, error trends, top countries.
-![Analytics](screenshots/analytics.png)
+![Analytics](assets/analytics.png)
 
 ### Live Feed
 Real-time stream of incoming events via Server-Sent Events (SSE).
-![Live Feed](screenshots/live-feed.png)
+![Live Feed](assets/live_feed.png)
 
 ### Event Generator
 Simulate production traffic — generate 100 to 5,000 synthetic events (login, signup, purchase, search, logout, API error) with random users, countries, devices, and browsers.
-![Generator](screenshots/generator.png)
+![Generator](assets/generator.png)
 
 ---
 

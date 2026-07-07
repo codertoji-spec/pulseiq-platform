@@ -8,33 +8,34 @@ export async function GET() {
 
   const stream = new ReadableStream({
     start(controller) {
-      // Send initial ping
-      controller.enqueue(encoder.encode("data: {\"type\":\"CONNECTED\"}\n\n"));
+      controller.enqueue(
+        encoder.encode('data: {"type":"CONNECTED"}\n\n')
+      );
 
-      // Subscribe to event bus
       const unsubscribe = eventBus.subscribe((data: string) => {
         try {
           controller.enqueue(encoder.encode(`data: ${data}\n\n`));
         } catch {
-          // stream closed
           unsubscribe();
         }
       });
 
-      // Keep-alive ping every 30 seconds
       const pingInterval = setInterval(() => {
         try {
-          controller.enqueue(encoder.encode("data: {\"type\":\"PING\"}\n\n"));
+          controller.enqueue(
+            encoder.encode('data: {"type":"PING"}\n\n')
+          );
         } catch {
           clearInterval(pingInterval);
           unsubscribe();
         }
       }, 30000);
 
-controller.oncancel = () => {
-  clearInterval(pingInterval);
-  unsubscribe();
-};
+      // Cleanup when the stream closes
+      return () => {
+        clearInterval(pingInterval);
+        unsubscribe();
+      };
     },
   });
 

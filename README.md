@@ -157,7 +157,3 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deployment
 
 Deployed on Vercel. Set `DATABASE_URL` and `JWT_SECRET` as environment variables in the Vercel project settings, then push to your connected branch.
-
-## License
-
-MIT (update as needed).
